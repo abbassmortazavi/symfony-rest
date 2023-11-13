@@ -28,18 +28,6 @@ class ProjectController extends AbstractController
     #[Route('/projects', name: 'project_index', methods: ['get'])]
     public function index(): JsonResponse
     {
-        //dispatch event
-        //$dispatch = new EventDispatcher();
-        /*$listener = new MyFirstListener();
-        $dispatch->addListener('demo.event', array($listener, 'onDemoEvent'));
-        $dispatch->dispatch(new MyFirstEvent(), MyFirstEvent::NAME);*/
-
-
-        //add subscriber
-       /* $subscriber = new DemoSubscriber();
-        $dispatch->addSubscriber($subscriber);
-        $dispatch->dispatch(new MyFirstEvent(), MyFirstEvent::NAME);*/
-
         try {
             $data = $this->projectService->index();
             return $this->json([
@@ -115,6 +103,21 @@ class ProjectController extends AbstractController
                 'message' => $exception->getMessage(),
             ]);
         }
+    }
+
+    public function testEvent()
+    {
+        //dispatch event
+        //$dispatch = new EventDispatcher();
+        /*$listener = new MyFirstListener();
+        $dispatch->addListener('demo.event', array($listener, 'onDemoEvent'));
+        $dispatch->dispatch(new MyFirstEvent(), MyFirstEvent::NAME);*/
+
+
+        //add subscriber
+        /* $subscriber = new DemoSubscriber();
+         $dispatch->addSubscriber($subscriber);
+         $dispatch->dispatch(new MyFirstEvent(), MyFirstEvent::NAME);*/
     }
 
 }
